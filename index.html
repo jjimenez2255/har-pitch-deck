@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAR - Investor Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --cream: #FAF9F7;
+            --sage: #E8EDE8;
+            --warm-gray: #E5E0DB;
+            --text-dark: #1A1A1A;
+            --text-muted: #7A7A7A;
+            --blush: #F5E6E0;
+            --soft-green: #D4DDD4;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .headline em { font-style: italic; }
+
+        .headline-sm {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.3;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .subhead {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .body {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 580px;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .body strong { font-weight: 500; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--sage) 0%, var(--white) 100%);
+        }
+
+        .hero .deck-type {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .hero .location {
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(5rem, 18vw, 12rem);
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            margin-bottom: 30px;
+        }
+
+        .logo-img {
+            height: clamp(80px, 15vw, 140px);
+            margin-bottom: 30px;
+        }
+
+        .tagline {
+            font-size: 15px;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        .white { background: var(--white); }
+        .cream { background: var(--cream); }
+        .sage { background: var(--sage); }
+        .blush { background: var(--blush); }
+
+        .dark {
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .dark .headline, .dark .headline-sm { color: var(--white); }
+        .dark .subhead { color: var(--soft-green); }
+        .dark .body { color: rgba(255,255,255,0.85); }
+        .dark .slide-info { color: rgba(255,255,255,0.4); }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 80px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        /* Box */
+        .box {
+            background: var(--cream);
+            border-left: 3px solid var(--soft-green);
+            padding: 30px 40px;
+            max-width: 600px;
+            margin-top: 40px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .dark .box {
+            background: rgba(255,255,255,0.05);
+            border-left-color: var(--soft-green);
+        }
+
+        /* Grid */
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .col h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .col ul { list-style: none; }
+        .col li { font-size: 15px; line-height: 2; color: var(--text-muted); }
+        .col.hi li { color: var(--text-dark); font-weight: 400; }
+
+        /* Tier cards */
+        .tier-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 25px;
+            text-align: left;
+        }
+
+        .tier-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .tier-card .tier-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .tier-card ul { list-style: none; }
+
+        .tier-card li {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.9;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .tier-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--soft-green);
+            font-size: 11px;
+        }
+
+        /* Customer section */
+        .customer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .customer-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 25px;
+            text-align: left;
+        }
+
+        .customer-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .customer-card .stat-big {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: var(--text-dark);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .customer-card ul { list-style: none; }
+
+        .customer-card li {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+
+        .customer-card li strong {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Insight callout */
+        .insight-inline {
+            background: var(--sage);
+            padding: 20px 30px;
+            margin-top: 30px;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .insight-inline p {
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .insight-inline strong {
+            font-weight: 600;
+        }
+
+        /* Price bars */
+        .prices {
+            display: flex;
+            align-items: flex-end;
+            gap: 25px;
+            margin-top: 40px;
+            height: 220px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pbar .bar {
+            width: 70px;
+            background: var(--cream);
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .pbar.hi .bar { background: var(--soft-green); color: var(--text-dark); }
+        .pbar .name { margin-top: 10px; font-size: 12px; text-align: center; }
+
+        /* Products inline */
+        .products-inline {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .prod-small {
+            background: white;
+            padding: 15px 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.06);
+            min-width: 120px;
+        }
+
+        .prod-small h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .prod-small .price { font-size: 13px; color: var(--text-muted); }
+
+        /* Aesthetic grid */
+        .aes-row {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .aes-item {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .aes-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .aes-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        /* Brand Combined */
+        .brand-combined-slide {
+            padding: 40px;
+        }
+
+        .brand-combined {
+            max-width: 900px;
+            margin-top: 30px;
+        }
+
+        .brand-images-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .brand-img {
+            aspect-ratio: 4/5;
+            overflow: hidden;
+        }
+
+        .brand-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aes-row-compact {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .aes-item-compact {
+            text-align: center;
+        }
+
+        .aes-item-compact h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .aes-item-compact p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Palette */
+        .palette { display: flex; gap: 15px; margin-top: 30px; }
+        .swatch { width: 50px; height: 50px; border-radius: 50%; }
+        .swatch.sw-white { background: #fff; border: 1px solid #eee; }
+        .swatch.sw-cream { background: #FAF9F7; }
+        .swatch.sw-sage { background: #E8EDE8; }
+        .swatch.sw-blush { background: #F5E6E0; }
+        .swatch.sw-warm { background: #E5E0DB; }
+
+        /* Business model compact */
+        .biz-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            max-width: 850px;
+            margin-top: 40px;
+        }
+
+        .biz-left {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .biz-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .biz-pill {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .biz-pill h5 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--soft-green);
+            margin-bottom: 6px;
+        }
+
+        .biz-pill p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* GTM compact */
+        .gtm-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .gtm-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gtm-card .pct {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--soft-green);
+            margin-bottom: 8px;
+        }
+
+        .gtm-card h5 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .gtm-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Why we win */
+        .win-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .win-col h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .win-col ul { list-style: none; }
+
+        .win-col li {
+            font-size: 14px;
+            line-height: 2.2;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .win-col li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--soft-green);
+        }
+
+        .win-col li strong { color: var(--text-dark); font-weight: 500; }
+
+        /* Founder compact */
+        .founder {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 700px;
+            margin-top: 40px;
+        }
+
+        .founder-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--soft-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .founder-info { flex: 1; }
+
+        .founder-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .founder-info .handle { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+        .founder-info p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+        .founder-stats { display: flex; gap: 25px; margin-top: 15px; }
+        .founder-stats .stat { text-align: left; }
+        .founder-stats .stat-num { font-size: 20px; color: var(--text-dark); font-weight: 500; }
+        .founder-stats .stat-label { font-size: 11px; margin-top: 2px; color: var(--text-muted); }
+
+        /* Comp Table */
+        .comp-table {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 40px;
+        }
+
+        .comp-row {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr 0.8fr 1.5fr 1.2fr;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            align-items: center;
+        }
+
+        .comp-header {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .comp-cell {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .comp-cell.brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .comp-cell.muted {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .comp-row.comp-highlight {
+            background: var(--soft-green);
+            padding: 15px;
+            margin: 0 -15px;
+            border-bottom: none;
+        }
+
+        .comp-row.comp-highlight .comp-cell {
+            color: var(--text-dark);
+        }
+
+        /* Dark comp slide */
+        .comp-slide .comp-table {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+        }
+
+        .comp-slide .comp-row {
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+
+        .comp-slide .comp-header {
+            color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .comp-slide .comp-cell {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .comp-slide .comp-cell.brand-name {
+            color: #fff;
+        }
+
+        .comp-slide .comp-cell.muted {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .comp-slide .comp-row.comp-highlight {
+            background: var(--soft-green);
+        }
+
+        .comp-slide .comp-row.comp-highlight .comp-cell {
+            color: var(--text-dark);
+        }
+
+        /* GTM Split */
+        .gtm-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 900px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .gtm-left h4, .gtm-right h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .gtm-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gtm-row {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .gtm-pct {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--soft-green);
+            min-width: 50px;
+        }
+
+        .gtm-row strong {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .gtm-row p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .social-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-card {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: var(--white);
+            padding: 15px;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .social-icon {
+            font-size: 20px;
+            color: var(--text-muted);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .social-card strong {
+            font-size: 14px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .social-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Traction */
+        .traction-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 750px;
+            margin-top: 50px;
+        }
+
+        .traction-card {
+            background: var(--cream);
+            padding: 30px 20px;
+            text-align: center;
+            border-left: 3px solid var(--soft-green);
+        }
+
+        .traction-card .traction-stat {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .traction-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .team-creds {
+            margin-top: 40px;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        .team-creds p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .team-creds strong {
+            color: var(--text-dark);
+        }
+
+        /* Foundation */
+        .foundation-section {
+            margin-top: 40px;
+            padding: 25px 30px;
+            background: var(--soft-green);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .foundation-section h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .foundation-section p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Closing */
+        .close-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .close-logo-img {
+            height: clamp(60px, 12vw, 100px);
+            margin-bottom: 30px;
+            filter: invert(1);
+        }
+
+        .close-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        @media (max-width: 768px) {
+            /* Base mobile */
+            section { 
+                padding: 50px 20px; 
+                min-height: 100svh;
+            }
+            
+            .slide-info {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                font-size: 10px;
+            }
+            
+            .headline { font-size: 2rem; }
+            .headline-sm { font-size: 1.5rem; }
+            .subhead { font-size: 10px; margin-bottom: 15px; }
+            .body { font-size: 15px; }
+            
+            /* Cover (slide 1) */
+            .hero .deck-type { top: 20px; right: 20px; font-size: 10px; }
+            .hero .location { font-size: 10px; }
+            .logo-img { height: 60px; margin-bottom: 20px; }
+            .tagline { font-size: 13px; line-height: 1.6; }
+            
+            /* Stats (slide 2) */
+            .stats { 
+                flex-direction: column; 
+                gap: 30px; 
+                margin-top: 30px;
+            }
+            .stat-num { font-size: 2.5rem; }
+            .stat-label { font-size: 10px; }
+            
+            /* Problem (slide 3) */
+            .grid2, .grid3 { 
+                grid-template-columns: 1fr; 
+                gap: 25px; 
+                margin-top: 25px !important;
+            }
+            .grid2 h3, .grid3 h3 { font-size: 16px; }
+            .grid2 li, .grid3 li { font-size: 13px; }
+            
+            /* Solution (slide 4) */
+            .box { 
+                padding: 20px 25px; 
+                margin-top: 25px;
+                font-size: 14px;
+            }
+            
+            /* Customer (slide 5) */
+            .customer-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+                margin-top: 25px;
+            }
+            .customer-card { padding: 20px; }
+            .customer-card h4 { font-size: 14px; }
+            .customer-card li { font-size: 12px; padding: 6px 0; }
+            .customer-card .stat-big { font-size: 2.5rem; }
+            .insight-inline { 
+                padding: 15px 20px; 
+                margin-top: 20px;
+            }
+            .insight-inline p { font-size: 12px; }
+            
+            /* Brand (slide 6) */
+            .brand-combined { margin-top: 20px; }
+            .brand-images-row { 
+                grid-template-columns: 1fr; 
+                gap: 8px; 
+                margin-bottom: 20px;
+            }
+            .brand-img { aspect-ratio: 16/10; }
+            .aes-row-compact { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 12px; 
+            }
+            .aes-item-compact h4 { font-size: 14px; }
+            .aes-item-compact p { font-size: 11px; }
+            
+            /* Business Model (slide 7) */
+            .biz-grid { 
+                grid-template-columns: 1fr; 
+                gap: 25px;
+                margin-top: 25px;
+            }
+            .biz-left { grid-template-columns: 1fr; gap: 12px; }
+            .tier-card { padding: 18px 15px; }
+            .tier-card h4 { font-size: 16px; }
+            .tier-card .tier-price { font-size: 12px; }
+            .tier-card li { font-size: 11px; padding: 4px 0; }
+            .biz-right { gap: 10px; }
+            .biz-pill { padding: 12px 15px; }
+            .biz-pill h5 { font-size: 13px; }
+            .biz-pill p { font-size: 11px; }
+            
+            /* Comps (slide 8) - dark */
+            .comp-slide .headline-sm { font-size: 1.3rem; }
+            .comp-table { 
+                padding: 15px; 
+                margin-top: 25px;
+                background: rgba(255,255,255,0.05);
+            }
+            .comp-row { 
+                grid-template-columns: 1fr;
+                gap: 6px;
+                padding: 12px;
+                margin-bottom: 8px;
+                background: rgba(255,255,255,0.03);
+                border: none;
+                border-left: 2px solid rgba(255,255,255,0.1);
+            }
+            .comp-header { display: none; }
+            .comp-cell { font-size: 12px; }
+            .comp-cell.brand-name { font-size: 15px; margin-bottom: 4px; }
+            .comp-cell.muted { font-size: 11px; }
+            .comp-cell::before {
+                font-size: 9px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: rgba(255,255,255,0.4);
+                display: block;
+                margin-bottom: 2px;
+            }
+            .comp-slide .comp-row:not(.comp-header) .comp-cell:nth-child(2)::before { content: 'Revenue'; }
+            .comp-slide .comp-row:not(.comp-header) .comp-cell:nth-child(3)::before { content: 'Price'; }
+            .comp-slide .comp-row:not(.comp-header) .comp-cell:nth-child(4)::before { content: 'Strength'; }
+            .comp-slide .comp-row:not(.comp-header) .comp-cell:nth-child(5)::before { content: 'Gap'; }
+            .comp-row.comp-highlight { 
+                background: var(--soft-green); 
+                border-left-color: var(--soft-green);
+            }
+            .comp-row.comp-highlight .comp-cell::before { color: var(--text-muted); }
+            
+            /* GTM (slide 9) */
+            .gtm-split { 
+                grid-template-columns: 1fr; 
+                gap: 25px; 
+                margin-top: 25px;
+            }
+            .gtm-left h4, .gtm-right h4 { 
+                font-size: 16px; 
+                margin-bottom: 15px; 
+                padding-bottom: 10px;
+            }
+            .gtm-channels { gap: 15px; }
+            .gtm-row { gap: 10px; }
+            .gtm-pct { font-size: 18px; min-width: 35px; }
+            .gtm-row strong { font-size: 12px; }
+            .gtm-row p { font-size: 11px; }
+            .social-stack { gap: 10px; }
+            .social-card { padding: 10px; gap: 10px; }
+            .social-icon { font-size: 16px; min-width: 25px; }
+            .social-card strong { font-size: 12px; }
+            .social-card p { font-size: 10px; }
+            
+            /* Why Now (slide 10) */
+            .win-grid { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+                margin-top: 25px;
+            }
+            .win-card { padding: 18px; }
+            .win-card h4 { font-size: 15px; }
+            .win-card p { font-size: 12px; }
+            
+            /* Traction (slide 11) */
+            .traction-grid { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 12px; 
+                margin-top: 25px;
+            }
+            .traction-card { padding: 15px 12px; }
+            .traction-card .traction-stat { font-size: 22px; }
+            .traction-card p { font-size: 11px; }
+            .team-creds { margin-top: 25px; }
+            .team-creds p { font-size: 13px; line-height: 1.6; }
+            
+            /* Founder (slide 12) */
+            .founder { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 20px;
+                margin-top: 25px;
+            }
+            .founder-photo { 
+                width: 120px; 
+                height: 120px; 
+            }
+            .founder-info h3 { font-size: 20px; }
+            .founder-info .title { font-size: 12px; }
+            .founder-bio { font-size: 13px; margin-top: 15px; }
+            .founder-bio li { padding: 4px 0; }
+            
+            /* Close (slide 13) */
+            .close-logo-img { 
+                height: 50px; 
+                max-width: 70%; 
+            }
+            .close-tag { 
+                font-size: 1rem; 
+                padding: 0 25px; 
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <section class="hero">
+        <span class="deck-type">Summer 2026</span>
+        <p class="location">Los Angeles</p>
+        <img src="har-logo.png" alt="HAR" class="logo-img">
+        <p class="tagline">She's not chasing trends.<br>She sets the tone wherever she goes.</p>
+        <div class="slide-info"><span></span><span>01 / 13</span></div>
+    </section>
+
+    <!-- Slide 2: The Opportunity -->
+    <section class="white">
+        <p class="subhead">The Opportunity</p>
+        <h1 class="headline">A $150B market.<br><em>And growing.</em></h1>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">$150B</div>
+                <div class="stat-label">Women's Ready-to-Wear</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">10%</div>
+                <div class="stat-label">Annual Growth</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">$12T</div>
+                <div class="stat-label">Gen Z Spend by 2030</div>
+            </div>
+        </div>
+        <div class="slide-info"><span>Market</span><span>02 / 13</span></div>
+    </section>
+
+    <!-- Slide 3: Problem + Gap -->
+    <section class="cream">
+        <p class="subhead">The Problem</p>
+        <h1 class="headline-sm">Elevated everyday is either expensive or cheap-looking</h1>
+        <div class="grid2" style="margin-top: 40px;">
+            <div class="col">
+                <h3>Taken</h3>
+                <ul>
+                    <li>High luxury (Miu Miu, $800+)</li>
+                    <li>Athleisure (Alo, Lululemon)</li>
+                    <li>Mid-market trendy (Aritzia, COS)</li>
+                    <li>Fast fashion (quality shows)</li>
+                </ul>
+            </div>
+            <div class="col hi">
+                <h3>The Opportunity</h3>
+                <ul>
+                    <li>Clean aesthetic at real prices</li>
+                    <li>Feminine, not athleisure</li>
+                    <li>Elevated everyday basics</li>
+                    <li>Quality that feels intentional</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-info"><span>Gap</span><span>03 / 13</span></div>
+    </section>
+
+    <!-- Slide 4: Solution -->
+    <section class="dark">
+        <p class="subhead">The Solution</p>
+        <h1 class="headline">HAR</h1>
+        <br>
+        <p class="body">
+            Clean girl for real life.<br>
+            The aesthetic without the price tag.<br><br>
+            She doesn't want to look rich.<br>
+            She wants to look <strong>intentional</strong>.
+        </p>
+        <div class="slide-info"><span>Solution</span><span>04 / 13</span></div>
+    </section>
+
+    <!-- Slide 5: Customer + Insight -->
+    <section class="sage">
+        <p class="subhead">The Customer</p>
+        <h1 class="headline-sm">We know exactly who she is</h1>
+        <div class="customer-grid">
+            <div class="customer-card">
+                <h4>Demographics</h4>
+                <ul>
+                    <li><strong>Age:</strong> 22-30</li>
+                    <li><strong>Income:</strong> $45K-100K</li>
+                    <li><strong>Location:</strong> LA, NYC, Austin</li>
+                    <li><strong>Discovery:</strong> TikTok first</li>
+                </ul>
+            </div>
+            <div class="customer-card">
+                <h4>What She Values</h4>
+                <ul>
+                    <li>Quality over quantity</li>
+                    <li>Routine as ritual</li>
+                    <li>Intentional, not impulsive</li>
+                    <li>Wellness as lifestyle</li>
+                    <li>Aspires to Miu Miu, shops Aritzia</li>
+                </ul>
+            </div>
+            <div class="customer-card">
+                <h4>The Insight</h4>
+                <div class="stat-big">79%</div>
+                <ul>
+                    <li>wait for sales</li>
+                    <li>But she wants a <strong>smart find</strong></li>
+                    <li>not a cheap find</li>
+                </ul>
+            </div>
+        </div>
+        <div class="insight-inline">
+            <p><strong>Give her a win that isn't a discount:</strong> Pre-order pricing. Early access. Limited drops.<br>"I got it before it sold out" beats "I got it on sale."</p>
+        </div>
+        <div class="slide-info"><span>Customer</span><span>05 / 13</span></div>
+    </section>
+
+    <!-- Slide 6: Brand World + Aesthetic Combined -->
+    <section class="cream brand-combined-slide">
+        <p class="subhead">The Brand</p>
+        <h1 class="headline-sm">Clean girl aesthetic</h1>
+        <div class="brand-combined">
+            <div class="brand-images-row">
+                <div class="brand-img"><img src="brand-1.jpg" alt="HAR"></div>
+                <div class="brand-img"><img src="brand-2.jpg" alt="HAR"></div>
+                <div class="brand-img"><img src="brand-3.jpg" alt="HAR"></div>
+            </div>
+            <div class="aes-row-compact">
+                <div class="aes-item-compact">
+                    <h4>Effortless</h4>
+                    <p>Looks like she didn't try, but everything works</p>
+                </div>
+                <div class="aes-item-compact">
+                    <h4>Feminine</h4>
+                    <p>Gentle, not harsh. Intentional, not forced</p>
+                </div>
+                <div class="aes-item-compact">
+                    <h4>Elevated</h4>
+                    <p>Basics that don't look basic</p>
+                </div>
+                <div class="aes-item-compact">
+                    <h4>Confident</h4>
+                    <p>She sets the tone. Never chasing, always leading</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-info"><span>Brand</span><span>06 / 13</span></div>
+    </section>
+
+    <!-- Slide 7: Business Model -->
+    <section class="white">
+        <p class="subhead">Business Model</p>
+        <h1 class="headline-sm">Core + Drops + Limited</h1>
+        <div class="biz-grid">
+            <div class="biz-left">
+                <div class="tier-card">
+                    <h4>Core</h4>
+                    <p class="tier-sub">Always in stock</p>
+                    <ul>
+                        <li>8-10 hero SKUs</li>
+                        <li>Neutrals only</li>
+                        <li>Her uniform</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <h4>Drops</h4>
+                    <p class="tier-sub">4x per year</p>
+                    <ul>
+                        <li>10-15 new pieces</li>
+                        <li>Pre-order window</li>
+                        <li>Limited quantities</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <h4>Limited</h4>
+                    <p class="tier-sub">2-3x per year</p>
+                    <ul>
+                        <li>Wellness collabs</li>
+                        <li>200-500 units</li>
+                        <li>Gone when gone</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="biz-right">
+                <div class="biz-pill">
+                    <h5>No Sales</h5>
+                    <p>The price is the price. Pre-order = her win.</p>
+                </div>
+                <div class="biz-pill">
+                    <h5>Made in USA</h5>
+                    <p>Story + ethics + speed. She cares.</p>
+                </div>
+                <div class="biz-pill">
+                    <h5>Margin</h5>
+                    <p>50%+ gross. No markdowns ever.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-info"><span>Model</span><span>07 / 13</span></div>
+    </section>
+
+    <!-- Slide 8: Product + Price -->
+    <section class="dark comp-slide">
+        <p class="subhead">Market Positioning</p>
+        <h1 class="headline-sm">Above fast fashion. Below designer.</h1>
+        <div class="comp-table">
+            <div class="comp-row comp-header">
+                <div class="comp-cell">Brand</div>
+                <div class="comp-cell">Revenue</div>
+                <div class="comp-cell">Price Range</div>
+                <div class="comp-cell">What They Do Right</div>
+                <div class="comp-cell">Gap</div>
+            </div>
+            <div class="comp-row">
+                <div class="comp-cell brand-name">Skims</div>
+                <div class="comp-cell">$750M</div>
+                <div class="comp-cell">$30-100</div>
+                <div class="comp-cell">Inclusive sizing, celebrity founder, basics</div>
+                <div class="comp-cell muted">Shapewear focus, not clean aesthetic</div>
+            </div>
+            <div class="comp-row">
+                <div class="comp-cell brand-name">Aritzia</div>
+                <div class="comp-cell">$2.1B</div>
+                <div class="comp-cell">$40-150</div>
+                <div class="comp-cell">Quality basics, aspirational positioning</div>
+                <div class="comp-cell muted">Mall brand, trending older</div>
+            </div>
+            <div class="comp-row">
+                <div class="comp-cell brand-name">Reformation</div>
+                <div class="comp-cell">$300M</div>
+                <div class="comp-cell">$80-300</div>
+                <div class="comp-cell">Sustainability story, feminine aesthetic</div>
+                <div class="comp-cell muted">Price creep, less accessible</div>
+            </div>
+            <div class="comp-row">
+                <div class="comp-cell brand-name">Alo Yoga</div>
+                <div class="comp-cell">$1B+</div>
+                <div class="comp-cell">$60-150</div>
+                <div class="comp-cell">Wellness lifestyle, studio culture</div>
+                <div class="comp-cell muted">Athleisure, not soft femininity</div>
+            </div>
+            <div class="comp-row comp-highlight">
+                <div class="comp-cell brand-name">HAR</div>
+                <div class="comp-cell">—</div>
+                <div class="comp-cell">$38-98</div>
+                <div class="comp-cell">Clean girl aesthetic, accessible price, Made in USA</div>
+                <div class="comp-cell"><strong>Feminine + accessible + quality</strong></div>
+            </div>
+        </div>
+        <div class="slide-info"><span>Comps</span><span>08 / 13</span></div>
+    </section>
+
+    <!-- Slide 9: How We Reach Her -->
+    <section class="sage">
+        <p class="subhead">Go-to-Market</p>
+        <h1 class="headline-sm">How we reach her</h1>
+        <div class="gtm-split">
+            <div class="gtm-left">
+                <h4>Distribution</h4>
+                <div class="gtm-channels">
+                    <div class="gtm-row">
+                        <span class="gtm-pct">70</span>
+                        <div>
+                            <strong>DTC Website</strong>
+                            <p>Core always in stock. Drops launch here first. Pre-order exclusives.</p>
+                        </div>
+                    </div>
+                    <div class="gtm-row">
+                        <span class="gtm-pct">15</span>
+                        <div>
+                            <strong>Pop-Ups</strong>
+                            <p>Farmers markets. Wellness events. Go where she already is.</p>
+                        </div>
+                    </div>
+                    <div class="gtm-row">
+                        <span class="gtm-pct">15</span>
+                        <div>
+                            <strong>Wholesale</strong>
+                            <p>Year 2+. Curated boutiques only.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gtm-right">
+                <h4>Social Strategy</h4>
+                <div class="social-stack">
+                    <div class="social-card">
+                        <div class="social-icon">▶</div>
+                        <div>
+                            <strong>TikTok</strong>
+                            <p>GRWM, day-in-my-life, outfit breakdowns. Discovery engine.</p>
+                        </div>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-icon">◐</div>
+                        <div>
+                            <strong>Instagram</strong>
+                            <p>Curated feed, brand world, community. Aspiration + validation.</p>
+                        </div>
+                    </div>
+                    <div class="social-card">
+                        <div class="social-icon">◉</div>
+                        <div>
+                            <strong>Pinterest</strong>
+                            <p>Highest purchase intent. "Clean girl capsule" boards. SEO play.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="insight-inline" style="margin-top: 30px;">
+            <p><strong>Content creates demand.</strong> Lifestyle 80%, product 20%. She follows HAR because the content is her life.</p>
+        </div>
+        <div class="slide-info"><span>GTM</span><span>09 / 13</span></div>
+    </section>
+
+    <!-- Slide 10: Why We Win -->
+    <section class="white">
+        <p class="subhead">Why We Win</p>
+        <h1 class="headline-sm">The Path</h1>
+        <div class="win-grid">
+            <div class="win-col">
+                <h4>Defensibility</h4>
+                <ul>
+                    <li><strong>Position</strong> - First to own accessible clean girl</li>
+                    <li><strong>Made in USA</strong> - Story + ethics + speed</li>
+                    <li><strong>Founder</strong> - Harley IS the customer</li>
+                    <li><strong>Community</strong> - Not buyers, believers</li>
+                    <li><strong>No sales model</strong> - Margin protection</li>
+                </ul>
+            </div>
+            <div class="win-col">
+                <h4>Growth Path</h4>
+                <ul>
+                    <li><strong>Year 1</strong> - 50K followers, $300-500K, 100% DTC</li>
+                    <li><strong>Year 2</strong> - 150K followers, $1-2M, profitable</li>
+                    <li><strong>Year 3</strong> - National pop-ups, $3-5M</li>
+                    <li><strong>Long-term</strong> - Category leader</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-info"><span>Why</span><span>10 / 13</span></div>
+    </section>
+
+    <!-- Slide 11: Where We're At -->
+    <section class="white">
+        <p class="subhead">Where We're At</p>
+        <h1 class="headline-sm">Properly capitalized. Proven team.</h1>
+        <div class="traction-grid">
+            <div class="traction-card">
+                <div class="traction-stat">2025</div>
+                <p>Raised & capitalized</p>
+            </div>
+            <div class="traction-card">
+                <div class="traction-stat">$50M+</div>
+                <p>Team revenue track record</p>
+            </div>
+            <div class="traction-card">
+                <div class="traction-stat">DTC</div>
+                <p>Apparel success</p>
+            </div>
+            <div class="traction-card">
+                <div class="traction-stat">M&A</div>
+                <p>Apparel acquisitions</p>
+            </div>
+        </div>
+        <div class="team-creds">
+            <p><strong>Investor + operator team</strong> with proven exits in DTC apparel, wholesale distribution, and brand acquisitions.</p>
+        </div>
+        <div class="slide-info"><span>Traction</span><span>11 / 13</span></div>
+    </section>
+
+    <!-- Slide 12: Founder -->
+    <section class="cream">
+        <p class="subhead">Founder</p>
+        <div class="founder">
+            <div class="founder-photo" id="founder-photo">HS</div>
+            <div class="founder-info">
+                <h3>Harley Skye</h3>
+                <p class="handle">@harleyyskyee</p>
+                <p>Built HAR because she couldn't find what she wanted. Pieces that let her look effortlessly put-together every day. Now building the brand she wished existed.</p>
+                <div class="founder-stats">
+                    <div class="stat">
+                        <div class="stat-num">22.8K</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foundation-section">
+            <h4>Harley's Angels Foundation</h4>
+            <p>It's not all about the clothing. Harley created the Harley's Angels Foundation as a way to give back to young girls. The Foundation runs in parallel to HAR.</p>
+        </div>
+        <div class="slide-info"><span>Team</span><span>12 / 13</span></div>
+    </section>
+
+    <!-- Slide 13: Close -->
+    <section class="dark">
+        <img src="har-logo.png" alt="HAR" class="close-logo-img">
+        <p class="close-tag">She's not chasing trends.<br>She sets the tone wherever she goes.</p>
+        <br><br>
+        <p class="body" style="font-size: 14px;">
+            harleysangels.com<br>
+            @har__studios
+        </p>
+        <div class="slide-info"><span></span><span>13 / 13</span></div>
+    </section>
+
+<!-- Sticky Note Review System -->
+    <style>
+        .sticky-note {
+            position: fixed;
+            width: 280px;
+            background: #FFF9C4;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 20px;
+            z-index: 10000;
+            font-family: 'Inter', sans-serif;
+            display: none;
+        }
+        .sticky-note.visible { display: block; }
+        .sticky-note textarea {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            min-height: 100px;
+            font-family: inherit;
+        }
+        .sticky-note textarea:focus { outline: none; }
+        .sticky-note .sticky-header {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sticky-note .close-btn {
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+        }
+        .sticky-note .close-btn:hover { color: #333; }
+        .sticky-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .sticky-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .btn-save {
+            background: #333;
+            color: white;
+        }
+        .btn-clear {
+            background: #eee;
+            color: #666;
+        }
+        .review-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 12px 24px;
+            font-size: 13px;
+            z-index: 9999;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .review-hint.show { opacity: 1; }
+        .comment-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: #FFF9C4;
+            border: 2px solid #F9A825;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #F57F17;
+            cursor: pointer;
+            z-index: 9998;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .send-all-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 9999;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: none;
+        }
+        .send-all-btn.visible { display: block; }
+    </style>
+
+    <div class="sticky-note" id="stickyNote">
+        <div class="sticky-header">
+            <span>Add Comment</span>
+            <span class="close-btn" onclick="closeStickyNote()">&times;</span>
+        </div>
+        <textarea id="noteText" placeholder="Type your feedback here..."></textarea>
+        <div class="sticky-actions">
+            <button class="btn-clear" onclick="closeStickyNote()">Cancel</button>
+            <button class="btn-save" onclick="saveNote()">Save</button>
+        </div>
+    </div>
+
+    <div class="review-hint" id="reviewHint">Click anywhere to add a comment</div>
+    <button class="send-all-btn" id="sendAllBtn" onclick="sendAllComments()">Send to Sofi</button>
+
+    <script>
+        let comments = [];
+        let commentCount = 0;
+        let currentClickX = 0;
+        let currentClickY = 0;
+        let currentSlide = 1;
+
+        // Show hint on load
+        window.addEventListener('load', () => {
+            const hint = document.getElementById('reviewHint');
+            hint.classList.add('show');
+            setTimeout(() => hint.classList.remove('show'), 4000);
+        });
+
+        // Track current slide
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sections = document.querySelectorAll('section');
+                    currentSlide = Array.from(sections).indexOf(entry.target) + 1;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Click to add note
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.sticky-note') || 
+                e.target.closest('.comment-marker') ||
+                e.target.closest('.send-all-btn')) return;
+
+            currentClickX = e.clientX;
+            currentClickY = e.clientY;
+
+            const sticky = document.getElementById('stickyNote');
+            sticky.style.left = Math.min(e.clientX, window.innerWidth - 300) + 'px';
+            sticky.style.top = Math.min(e.clientY, window.innerHeight - 250) + 'px';
+            sticky.classList.add('visible');
+            document.getElementById('noteText').focus();
+        });
+
+        function closeStickyNote() {
+            document.getElementById('stickyNote').classList.remove('visible');
+            document.getElementById('noteText').value = '';
+        }
+
+        function saveNote() {
+            const text = document.getElementById('noteText').value.trim();
+            if (!text) return;
+
+            commentCount++;
+            const comment = {
+                id: commentCount,
+                slide: currentSlide,
+                x: currentClickX + window.scrollX,
+                y: currentClickY + window.scrollY,
+                text: text,
+                timestamp: new Date().toISOString()
+            };
+            comments.push(comment);
+
+            // Add marker
+            const marker = document.createElement('div');
+            marker.className = 'comment-marker';
+            marker.style.left = comment.x + 'px';
+            marker.style.top = comment.y + 'px';
+            marker.textContent = commentCount;
+            marker.title = text;
+            document.body.appendChild(marker);
+
+            closeStickyNote();
+            document.getElementById('sendAllBtn').classList.add('visible');
+        }
+
+        function sendAllComments() {
+            if (comments.length === 0) return;
+            
+            let message = 'HAR Pitch Deck Feedback:\n\n';
+            comments.forEach(c => {
+                message += `[Slide ${c.slide}] ${c.text}\n\n`;
+            });
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(message).then(() => {
+                alert('Comments copied! Paste in Telegram to send to Sofi.');
+            }).catch(() => {
+                // Fallback
+                const ta = document.createElement('textarea');
+                ta.value = message;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                alert('Comments copied! Paste in Telegram to send to Sofi.');
+            });
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeStickyNote();
+            if (e.key === 'Enter' && e.metaKey) saveNote();
+        });
+    </script>
+
+</body>
+</html>
